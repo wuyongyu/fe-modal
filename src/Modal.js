@@ -1,7 +1,7 @@
 import React from "react";
 import "./modal.css";
 
-const noop = _ => undefined;
+const noop = () => {};
 
 class Modal extends React.Component {
   render() {
@@ -23,27 +23,23 @@ class Modal extends React.Component {
       cancelText
     } = this.props;
     return (
-      <React.Fragment>
-        {visible && (
-          <div
-            className="modal-box"
-            style={{ backgroundColor: `rgba(0, 0, 0, ${opacity})` }}
-          >
-            <div className="modal-container" style={{ width, height }}>
-              <div className={titleClass}>{title}</div>
-              <div className={contentClass}>{content}</div>
-              <div className={footerClass}>
-                <div className={cancelClass} onClick={onCancel}>
-                  {cancelText}
-                </div>
-                <div className={okClass} onClick={onOk}>
-                  {confirmText}
-                </div>
-              </div>
+      <div
+        className={`modal-box  ${visible ? "modal-transition" : ""}`}
+        style={{ backgroundColor: `rgba(0, 0, 0, ${opacity})` }}
+      >
+        <div className="modal-container" style={{ width, height }}>
+          <div className={titleClass}>{title}</div>
+          <div className={contentClass}>{content}</div>
+          <div className={footerClass}>
+            <div className={cancelClass} onClick={onCancel}>
+              {cancelText}
+            </div>
+            <div className={okClass} onClick={onOk}>
+              {confirmText}
             </div>
           </div>
-        )}
-      </React.Fragment>
+        </div>
+      </div>
     );
   }
 }
@@ -52,7 +48,7 @@ Modal.defaultProps = {
   onOk: noop,
   onCancel: noop,
   opacity: 0.6,
-  width: "400px",
+  width: "520px",
   height: "auto",
   confirmText: "确定",
   cancelText: "取消",
