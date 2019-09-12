@@ -29,15 +29,15 @@ class Modal extends React.Component {
             className="modal-box"
             style={{ backgroundColor: `rgba(0, 0, 0, ${opacity})` }}
           >
-            <div className="modal-content" style={{ width, height }}>
+            <div className="modal-container" style={{ width, height }}>
               <div className={titleClass}>{title}</div>
               <div className={contentClass}>{content}</div>
               <div className={footerClass}>
-                <div className={okClass} onClick={onOk}>
-                  {confirmText}
-                </div>
                 <div className={cancelClass} onClick={onCancel}>
                   {cancelText}
+                </div>
+                <div className={okClass} onClick={onOk}>
+                  {confirmText}
                 </div>
               </div>
             </div>

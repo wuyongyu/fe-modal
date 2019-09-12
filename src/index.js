@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Modal from "./Modal";
+import "./index.css";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      title: "title",
-      content: "content",
+      title: "标题",
+      content: "内容。。。",
       visible: false
     };
   }
@@ -29,14 +30,15 @@ class App extends React.Component {
   render() {
     const { title, content, visible } = this.state;
     return (
-      <div className="App">
-        <div onClick={this.openModal}>开启弹窗</div>
+      <div className="app">
+        <div className="button primary" onClick={this.openModal}>
+          开启弹窗
+        </div>
         <Modal
           visible={visible}
           title={title}
           content={content}
           width={"600px"}
-          height={"600px"}
           onOk={this.onOk}
           opacity={0.66}
           onCancel={this.onCancel}
